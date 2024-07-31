@@ -73,5 +73,8 @@ print(numbers)
 chess_time_controls = ('90 + 10', '15 + 10', '5 + 3')
 classical, rapid, blitz = chess_time_controls
 print(classical)
+# This will print 90 + 10
 print(rapid)
+# This will print 15 + 10
 print(blitz)
+# This will print 5 + 3

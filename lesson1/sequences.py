@@ -117,7 +117,13 @@ print(max(numbers))
 
 name = 'decalcomanie'
 print(min(name))
+# This will print a
 print(max(name))
+# This will print o
+
+names = ['dreamcatcher', 'twice', 'gidle', 'stray kids']
+print(min(names))
+print(max(names))
 
 group_name = 'Red Velvet'
 print(list(group_name))
