@@ -78,3 +78,84 @@ print(rapid)
 # This will print 15 + 10
 print(blitz)
 # This will print 5 + 3
+
+chess_time_controls = ('classical', 'rapid', 'blitz', 'bullet')
+print(chess_time_controls.count('classical'))
+# This will print 1
+print(chess_time_controls.index('blitz'))
+# This will print 2
+
+print(list('Likey'))
+# This will print ['L', 'i', 'k', 'e', 'y']
+
+print(tuple('Twice'))
+# This will print ('T', 'w', 'i', 'c', 'e')
+
+games = ['chess', 'checkers', 'go']
+tuple_games = tuple(games)
+print(tuple_games)
+# This will print ('chess', 'checkers', 'go')
+print(list(tuple_games))
+# This will print ['chess', 'checkers', 'go']
+
+food_types = { 
+			 'protein': 'chicken',
+			 'carbohydrate': 'bread',
+			 'vegetable': 'carrot'
+			 }
+key_list = list(food_types.keys())
+print(key_list)
+# This will print ['protein', 'carbohydrate', 'vegetable']
+key_tuple = tuple(food_types.keys())
+print(key_tuple)
+# This will print ('protein', 'carbohydrate', 'vegetable')
+
+food_types = { 
+			 'protein': 'chicken',
+			 'carbohydrate': 'bread',
+			 'vegetable': 'carrot'
+			 }
+values_list = list(food_types.values())
+print(values_list)
+# This will print ['chicken', 'bread', 'carrot')]
+values_tuple = tuple(food_types.values())
+print(values_tuple)
+# This will print ('chicken', 'bread', 'carrot')
+
+food_types = { 
+			 'protein': 'chicken',
+			 'carbohydrate': 'bread',
+			 'vegetable': 'carrot'
+			 }
+pairs_list = list(food_types.items())
+print(pairs_list)
+# This will print [('protein', 'chicken'), ('carbohydrate', 'bread'), ('vegetable', 'carrot')]
+pairs_tuple = tuple(food_types.items())
+print(pairs_tuple)
+# This will print (('protein', 'chicken'), ('carbohydrate', 'bread'), ('vegetable', 'carrot'))
+
+vehicles = {'truck', 'sedan', 'carriage'}
+print(list(vehicles))
+# This will print ['truck', 'carriage', 'sedan']
+print(tuple(vehicles))
+# This will print ('truck', 'carriage', 'sedan')
+
+frozen_fruits = frozenset(['apple', 'banana', 'cherry'])
+print(list(frozen_fruits))
+# This will print ['apple', 'banana', 'cherry']
+print(tuple(frozen_fruits))
+# This will print ('apple', 'banana', 'cherry')
+
+games = ['chess', 'checkers', 'go']
+for game in games:
+	print(game)
+# This will print each game on a new line
+
+more_games = ('shogi', 'reversi', 'mancala')
+for game in more_games:
+	print(game)
+# This will print each game on a new line
+
+for index, game in enumerate(games):
+	print(f'{game} is at index {index}')
+# This will print 'chess is at index 0' for each game and index on a new line
