@@ -126,7 +126,7 @@ print(food_types)
 # This will print {}
 
 vehicles = {'truck', 'sedan', 'carriage'}
-vehicles.clear()x
+vehicles.clear()
 print(vehicles)
 # This will print {}
 
