@@ -48,7 +48,7 @@ print(select_fruit(produce))  # { apple: 'Fruit', pear: 'Fruit' }
 
 def double_numbers(numbers):
     for index, num in enumerate(numbers):
-	    numbers[index] = num * 2
+        numbers[index] = num * 2
     return numbers
 
 my_numbers = [1, 4, 3, 7, 2, 6]
@@ -95,7 +95,7 @@ print(select_type(produce, 'Meat'))
 def double_numbers_modded(numbers, multiplier):
     doubled_numbers = []
     for num in numbers:
-	    doubled_numbers.append(num * multiplier)
+        doubled_numbers.append(num * multiplier)
     return doubled_numbers
 
 my_numbers = [1, 4, 3, 7, 2, 6]
