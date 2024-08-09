@@ -148,3 +148,17 @@ print(set(numbers))
 numbers = [1, 2, 3, 4, 5, 6, 7, 7, 8, 8, 9, 9, 10]
 print(frozenset(numbers))
 # This will print frozenset({1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+
+food_types = { 
+			 'protein': 'chicken',
+			 'carbohydrate': 'bread',
+			 'vegetable': 'carrot'
+			 }
+
+classical_ratings = {'Magnus': 2832, 
+					'Hikaru': 2802, 
+					'Fabiano': 2793, 
+					'Arjun': 2778}
+
+print(food_types > classical_ratings)
+# This will throw a TypeError
