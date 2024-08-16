@@ -1,3 +1,5 @@
+import time
+
 word = 'dreamcatcher'
 print(len(word))
 # This will print 12
@@ -30,3 +32,9 @@ print(len(vehicles))
 tactics = frozenset(['pin', 'skewer', 'x-ray'])
 print(len(tactics))
 # This will print 3
+
+# print function examples
+print(time.asctime())
+print('cent', 'dollar', 'quarter')
+print('cent', 'dollar', 'quarter', sep=', ')
+print('cent', 'dollar', 'quarter', sep=', ', end='<-')
