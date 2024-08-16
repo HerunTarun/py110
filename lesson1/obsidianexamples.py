@@ -37,4 +37,8 @@ print(len(tactics))
 print(time.asctime())
 print('cent', 'dollar', 'quarter')
 print('cent', 'dollar', 'quarter', sep=', ')
-print('cent', 'dollar', 'quarter', sep=', ', end='<-')
+print('cent', 'dollar', 'quarter', sep=', ', end='<-\n')
+
+# id examples
+greeting = 'hello world'
+print(id(greeting))
