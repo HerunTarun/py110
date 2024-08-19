@@ -42,3 +42,59 @@ print('cent', 'dollar', 'quarter', sep=', ', end='<-\n')
 # id examples
 greeting = 'hello world'
 print(id(greeting))
+
+def remove_last_element(list):
+	list.pop()
+numbers = [1, 2, 3, 4, 5]
+remove_last_element(numbers)
+print(numbers)
+
+name1 = None
+name2 = 'Jerry'
+is_name = name1 or name2
+print(is_name)
+
+
+numbers = (2, 3, 4, 5)
+other_numbers = tuple(numbers)
+
+print(numbers)
+# This will print (2, 3, 4, 5)
+print(other_numbers)
+# This will print (2, 3, 4, 5)
+
+print(numbers == other_numbers)
+# This will print True
+print(numbers is other_numbers)
+# This will print False
+
+numbers = {2, 3, 4, 5}
+other_numbers = set(numbers)
+
+print(numbers)
+# This will print {2, 3, 4, 5}
+print(other_numbers)
+# This will print {2, 3, 4, 5}
+
+print(numbers == other_numbers)
+# This will print True
+print(numbers is other_numbers)
+# This will print False
+
+
+numbers = frozenset([2, 3, 4, 5])
+other_numbers = frozenset(numbers)
+
+print(numbers)
+# This will print frozenset(2, 3, 4, 5)
+print(other_numbers)
+# This will print frozenset(2, 3, 4, 5)
+
+print(numbers == other_numbers)
+# This will print True
+print(numbers is other_numbers)
+# This will print False
+
+name = 'twice'
+new_set = set(name)
+print(new_set)
