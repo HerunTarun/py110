@@ -349,3 +349,36 @@ print(sentence.find('trusted', 3)) # 138
 
 print(sentence.rfind('trusted')) # 138
 print(sentence.rfind('trusted', 0, 50)) # 2
+
+squares = [number * number for number in range(5)]
+print(squares)
+# [0, 1, 5, 9, 16]
+
+
+evens = [number for number in range(10) if number % 2 == 0]
+print(evens)
+# [0, 2, 4, 6, 8]
+
+even_squares = [number * number for number in range(10) if number % 2 == 0]
+print(even_squares)
+
+squares = {f'{number}-squared': number * number 
+		   for number in range(5)}
+print(squares)
+
+evens = {f'even {number}': number 
+		 for number in range(10) if number % 2 == 0}
+print(evens)
+
+even_squares = {f'{number} squared': number * number 
+				for number in range(10) if number % 2 == 0}
+print(even_squares)
+
+squares = {number * number for number in range(5)}
+print(squares)
+
+evens = {number for number in range(10) if number % 2 == 0}
+print(evens)
+
+even_squares = {number * number for number in range(10) if number % 2 == 0}
+print(even_squares)
