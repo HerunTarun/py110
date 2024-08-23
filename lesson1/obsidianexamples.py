@@ -382,3 +382,52 @@ print(evens)
 
 even_squares = {number * number for number in range(10) if number % 2 == 0}
 print(even_squares)
+
+singular_number = 42
+singular_number += 8
+print(singular_number)           # 50
+
+numbers = [1, 2, 3, 4]
+numbers += [5, 6, 7, 8]
+print(numbers)
+
+import copy
+my_list = [[1, 2,], 3, 4]
+my_list2 = copy.copy(my_list)
+print(my_list)
+print(my_list2)
+print(my_list == my_list2)
+print(my_list is my_list2)
+print(my_list[0] is my_list2[0])
+
+my_list[0][1] = 'two'
+print(my_list)
+print(my_list2)
+
+
+my_list = [[1, 2,], 3, 4]
+my_list2 = copy.deepcopy(my_list)
+print(my_list)                    # [[1, 2], 3, 4]
+print(my_list2)                   # [[1, 2], 3, 4]
+print(my_list == my_list2)        # True, they contain the same values
+print(my_list is my_list2)        # False, they're different objects
+print(my_list[0] is my_list2[0])  # False, nested objects are duplicated
+
+my_list[0][1] = 'two'
+print(my_list)                    # [[1, 'two'], 3, 4]
+print(my_list2)                   # [[1, 2], 3, 4]
+
+fruit = "apple"
+
+def my_function():
+    fruit = "banana"
+
+    def nested_function():
+        nonlocal fruit
+        fruit = "cherry"
+
+    nested_function()
+    print(fruit)
+
+my_function()
+print(fruit)
