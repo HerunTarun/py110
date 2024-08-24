@@ -69,3 +69,21 @@ print(total_age)
 
 minimum_age = min(ages.values())
 print(minimum_age)
+
+# Problem 7
+# What would the following code output?
+
+words = ['ant', 'bear', 'cat']
+selected_words = []
+for word in words:
+    if len(word) > 3:
+        selected_words.append(word)
+
+print(selected_words)
+# This will print ['bear']
+
+# Problem 8
+# Given the following string, create a dictionary that represents the frequency 
+# with which each letter occurs. The frequency count should be case-sensitive:
+
+statement = "The Flintstones Rock"
