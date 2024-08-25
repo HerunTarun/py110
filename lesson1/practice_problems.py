@@ -94,3 +94,40 @@ for char in list(statement):
         frequency_count[char] = statement.count(char)
 
 print(frequency_count)
+
+#{
+# 'T': 1, 
+# 'h': 1, 
+# 'e': 2, 
+# 'F': 1, 
+# 'l': 1, 
+# 'i': 1, 
+# 'n': 2, 
+# 't': 2, 
+# 's': 2, 
+# 'o': 2, 
+# 'R': 1, 
+# 'c': 1, 
+# 'k': 1
+#}
+
+# Problem 9
+
+# What is the return value of the list comprehension below? 
+# Try to answer without running the code.
+
+comprehension = [num for num in [1, 2, 3] if num > 1]
+print(comprehension) # should print [2, 3]
+
+# Problem 10
+# What does the following code print and why?
+
+dictionary = {'a': 'ant', 'b': 'bear'}
+print(dictionary.popitem()) # should ('b', 'bear')
+
+# Problem 11
+# What does the following code output and why?
+
+frozen = frozenset([1, 2, 3, 4, 5])
+frozen.add(6)
+print(frozen) # AttributeError, you can't add items to a frozen set
