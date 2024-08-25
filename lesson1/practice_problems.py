@@ -87,3 +87,10 @@ print(selected_words)
 # with which each letter occurs. The frequency count should be case-sensitive:
 
 statement = "The Flintstones Rock"
+frequency_count = {}
+print(list(statement))
+for char in list(statement):
+    if char != ' ':
+        frequency_count[char] = statement.count(char)
+
+print(frequency_count)
