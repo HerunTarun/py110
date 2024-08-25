@@ -431,3 +431,12 @@ def my_function():
 
 my_function()
 print(fruit)
+
+names = frozenset(['Sweets', 'Cloak', 'Dagger'])
+print(id(names))
+# This will print a unique identity e.g. 140558144594528
+names = frozenset(['Price', 'Cloak', 'Dagger'])
+print(names)
+# This will print something like {'Cloak', 'Dagger', 'Price'}
+print(id(names))
+# This will print a different unique identity e.g. 140558144594976
