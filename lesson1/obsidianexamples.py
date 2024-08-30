@@ -440,3 +440,42 @@ print(names)
 # This will print something like {'Cloak', 'Dagger', 'Price'}
 print(id(names))
 # This will print a different unique identity e.g. 140558144594976
+
+
+my_dict = {'Harry': 'Hogwarts', 'Hagrid': 'Hogwarts'}
+my_dict2 = {'Voldy': 'Death Eater', 'Snape': 'Spy'}
+
+print(min(my_dict))
+print(max(my_dict2))
+
+name = 'twice'
+new_set = frozenset(name)
+print(new_set)
+# This will print frozenset({'c', 't', 'e', 'w', 'i'})
+
+numbers = frozenset([2, 3, 4, 5])
+other_numbers = frozenset(numbers)
+
+print(new_set.isdisjoint(numbers))
+
+intro = "The days were long, but the nights were longer"
+print(intro.find('were', 15))
+# This will print 35
+print(intro.find('were', 0, 15))
+# This will print 9
+classical_ratings = {'Magnus': 2832, 
+					'Hikaru': 2802, 
+					'Fabiano': 2793, 
+					'Arjun': 2778}
+
+more_ratings = {'Arjun': 2780, 
+					'Gukesh': 2766, 
+					'Yi': 2762, 
+					'Nodirbek': 2761}
+
+classical_ratings |= more_ratings
+print(classical_ratings)
+# This will print {'Magnus': 2832, 'Hikaru': 2802, 'Fabiano': 2793, 'Arjun': 2780, 'Gukesh': 2766, 'Yi': 2762, 'Nodirbek': 2761}
+
+openings = {'Berlin', 'London', 'Ruy Lopez', 'Italian'}
+# openings.remove('Sicilian')
