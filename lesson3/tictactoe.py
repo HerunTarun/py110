@@ -1,10 +1,12 @@
 import random
 import json
 import os
+import pdb
 
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+GAMES_TO_WIN = 5 
 
 def prompt(message):
     print(f'==> {message}')
@@ -15,13 +17,11 @@ def clear_screen():
 def display_welcome():
     prompt(messages['welcome'])
     prompt(messages['name_intro'])
-    prompt(messages['games_rules'])
+    prompt(messages['game_rules'])
 
 def display_board(board):
-    clear_screen()
-
-    prompt(messages['player_markers'].format(HUMAN_MARKER = HUMAN_MARKER, 
-                                             COMPUTER_MARKER = COMPUTER_MARKER))
+    prompt(messages['markers'].format(HUMAN_MARKER = HUMAN_MARKER, 
+                                      COMPUTER_MARKER = COMPUTER_MARKER))
     print('')
     print('     |     |')
     print(f'  {board[1]}  |  {board[2]}  |  {board[3]}')
@@ -53,7 +53,7 @@ def player_chooses_square(board):
         square = input().strip()
         if square in valid_choices:
             break
-        
+
         prompt(messages['invalid_input'])
 
     board[int(square)] = HUMAN_MARKER
@@ -81,13 +81,48 @@ def detect_winner(board):
         if (board[square1] == HUMAN_MARKER 
             and board[square2] == HUMAN_MARKER 
             and board[square3] == HUMAN_MARKER):
-            return messages['win']
+            return 'Player'
         elif (board[square1] == COMPUTER_MARKER 
               and board[square2] == COMPUTER_MARKER 
               and board[square3] == COMPUTER_MARKER):
-            return messages['lose']
+            return 'Alexandra'
     
     return None
+
+def display_winner(winner):
+    match winner:
+        case 'Player':
+            prompt(messages['win'])
+        case 'Alexandra':
+            prompt(messages['lose'])
+
+def update_match_score(winner, scores):
+    if winner == 'Player':
+        scores['player_score'] += 1
+
+    if winner == 'Alexandra':
+        scores['computer_score'] += 1
+
+def display_match_score(scores):
+    prompt(messages['match_score'].format(player_score = scores['player_score'],
+                                    computer_score = scores['computer_score']))
+
+def is_match_over(scores):
+    if GAMES_TO_WIN in list(scores.values()):
+        return True
+
+    return False    
+
+def display_match_winner(scores):
+    if scores['player_score'] == GAMES_TO_WIN:
+        prompt(messages['player_match_winner'])
+
+    if scores['computer_score'] == GAMES_TO_WIN:
+        prompt(messages['computer_match_winner'])
+
+def clear_score(scores):
+    scores['player_score'] = 0
+    scores['computer_score'] = 0
 
 def replay_game():
     prompt(messages['replay'])
@@ -113,22 +148,36 @@ def is_yes():
 
 def play_tic_tac_toe():
     while True:
+        clear_screen()
         board = initialize_board()
+        scores = {'player_score': 0, 'computer_score': 0}
+
+        display_welcome()
 
         while True:
+            display_match_score(scores)
             display_board(board)
             player_chooses_square(board)
+
             if someone_won(board) or board_full(board):
                 break
             computer_chooses_square(board)
             if someone_won(board) or board_full(board):
                 break
-    
         if someone_won(board):
-            prompt(f"{detect_winner(board)}")
+
+            winner = detect_winner(board)
+            display_winner(winner)
+            update_match_score(winner, scores)
         else:
             prompt(messages['tie'])
         
+        if is_match_over(scores):
+            display_match_winner(scores)
+            clear_score(scores)
+        else:
+            pass
+
         if not replay_game():
             break
 
