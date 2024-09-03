@@ -50,7 +50,7 @@ def player_chooses_square(board):
         prompt(messages['player_input'].format(
             formatted_valid_choices = formatted_valid_choices))
         
-        square = input().strip() # Do exception handling for alphabet
+        square = input().strip()
         if square in valid_choices:
             break
         
@@ -101,10 +101,15 @@ def replay_game():
 def is_yes():
     answer = input().lower()
 
-    while answer.lower() not in ['y', 'yes']:
+    while answer not in ['y', 'n']:
+        prompt(messages['invalid_input'])
+        prompt(messages['replay_options'])
+        answer = input().lower()
+    
+    if answer == 'y':
+        return True
+    else:
         return False
-
-    return True
 
 def play_tic_tac_toe():
     while True:

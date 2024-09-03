@@ -13,6 +13,7 @@
     "user_match_winner": "You won the match! Ember is now, begrudgingly, Spark",
     "computer_match_winner": "Aw, you lost! Ember changed her name to Blaze!",
     "replay": "Do you want to play Alexandra again? Enter 'y' or 'n'!",
+    "replay_options": "You can pick 'y' or 'n'.",
     "goodbye": "Alexandra says 'See you later!'"
     
 }
