@@ -104,8 +104,10 @@ def update_match_score(winner, scores):
         scores['computer_score'] += 1
 
 def display_match_score(scores):
-    prompt(messages['match_score'].format(player_score = scores['player_score'],
-                                    computer_score = scores['computer_score']))
+    prompt(messages['match_score'].format(
+                                    player_score = scores['player_score'],
+                                    computer_score = scores['computer_score']
+                                    ))
 
 def is_match_over(scores):
     if GAMES_TO_WIN in list(scores.values()):
