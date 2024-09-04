@@ -6,7 +6,7 @@
     "markers": "You are {HUMAN_MARKER} and Alexandra is {COMPUTER_MARKER}",
     "player_input": "Choose a square ({formatted_valid_choices}): ",
     "invalid_input": "Sorry! That's not a valid choice. Try something from below!",
-    "win": "You won! Alexandra's getting fired up. She's gonna beat you next time!",
+    "win": "You won the game! Alexandra's getting fired up. She's gonna beat you next time!",
     "lose": "Alexandra won! She gives you a hug and whispers 'It's okay, I've lost plenty of times too'",
     "tie": "It's a tie! Alexandra squints at you. 'You're better than I thought'",
     "match_score": "The match score is {player_score} : {computer_score}",
