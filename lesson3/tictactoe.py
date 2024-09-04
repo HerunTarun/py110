@@ -59,10 +59,10 @@ def player_chooses_square(board):
     while True:
         valid_choices = [str(num) for num in empty_squares(board)]
         formatted_valid_choices = format_valid_choices(valid_choices)
-        
+
         prompt(messages['player_input'].format(
             formatted_valid_choices = formatted_valid_choices))
-        
+
         square = input().strip()
         if square in valid_choices:
             break
@@ -99,7 +99,7 @@ def detect_winner(board):
               and board[square2] == COMPUTER_MARKER 
               and board[square3] == COMPUTER_MARKER):
             return 'Alexandra'
-    
+
     return None
 
 def display_winner(winner):
@@ -155,7 +155,7 @@ def is_yes():
         prompt(messages['invalid_input'])
         prompt(messages['replay_options'])
         answer = input().lower()
-    
+
     if answer == 'y':
         return True
     else:
@@ -167,16 +167,15 @@ def play_tic_tac_toe():
     while True:
         clear_screen()
         board = initialize_board()
-        
+
         while True:
             display_board(board)
-            player_chooses_square(board)
 
+            choose_square(board, current_player)
+            current_player = switch_player(current_player)
             if someone_won(board) or board_full(board):
                 break
-            computer_chooses_square(board)
-            if someone_won(board) or board_full(board):
-                break
+
         if someone_won(board):
             winner = detect_winner(board)
             display_winner(winner)
@@ -185,7 +184,7 @@ def play_tic_tac_toe():
         else:
             prompt(messages['tie'])
             display_match_score(scores)
-        
+
         if is_match_over(scores):
             display_match_winner(scores)
             clear_score(scores)
