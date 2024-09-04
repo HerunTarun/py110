@@ -6,7 +6,7 @@ import pdb
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
-GAMES_TO_WIN = 5 
+GAMES_TO_WIN = 3 
 
 def prompt(message):
     print(f'==> {message}')
@@ -149,15 +149,13 @@ def is_yes():
         return False
 
 def play_tic_tac_toe():
+    display_welcome()
+    scores = {'player_score': 0, 'computer_score': 0}
     while True:
         clear_screen()
         board = initialize_board()
-        scores = {'player_score': 0, 'computer_score': 0}
-
-        display_welcome()
-
+        
         while True:
-            display_match_score(scores)
             display_board(board)
             player_chooses_square(board)
 
@@ -167,12 +165,13 @@ def play_tic_tac_toe():
             if someone_won(board) or board_full(board):
                 break
         if someone_won(board):
-
             winner = detect_winner(board)
             display_winner(winner)
             update_match_score(winner, scores)
+            display_match_score(scores)
         else:
             prompt(messages['tie'])
+            display_match_score(scores)
         
         if is_match_over(scores):
             display_match_winner(scores)
