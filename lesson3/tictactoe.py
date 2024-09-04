@@ -161,13 +161,26 @@ def is_yes():
     else:
         return False
 
+def choose_square(board, current_player):
+    if current_player == 'Player':
+        player_chooses_square(board)
+    else:
+        computer_chooses_square(board)
+    
+def switch_player(current_player):
+    if current_player == 'Player':
+        return 'Alexandra'
+    else:
+        return 'Player'
+
 def play_tic_tac_toe():
     display_welcome()
     scores = {'player_score': 0, 'computer_score': 0}
     while True:
         clear_screen()
         board = initialize_board()
-
+        current_player = 'Player'
+        
         while True:
             display_board(board)
 
