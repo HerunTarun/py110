@@ -42,10 +42,23 @@ def initialize_board():
 def empty_squares(board):
     return [key for key, value in board.items() if value == INITIAL_MARKER]
 
+def format_valid_choices(lst, sep=', ', conjunction='or'):
+    if len(lst) < 2:
+        result = ''
+        for num in lst:
+            result += str(num)
+        return result
+    elif len(lst) == 2:
+        return f"{lst[0]} {conjunction} {lst[1]}"
+    else:
+        string_lst = [str(num) for num in lst]
+        last_choice = string_lst.pop()
+        return f"{sep.join(string_lst)}{sep}{conjunction} {last_choice}"
+
 def player_chooses_square(board):
     while True:
         valid_choices = [str(num) for num in empty_squares(board)]
-        formatted_valid_choices = ', '.join(valid_choices)
+        formatted_valid_choices = format_valid_choices(valid_choices)
         
         prompt(messages['player_input'].format(
             formatted_valid_choices = formatted_valid_choices))
