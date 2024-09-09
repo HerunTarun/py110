@@ -6,6 +6,11 @@ import pdb
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+WINNING_COMBINATIONS = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9],
+        [1, 4, 7], [2, 5, 8], [3, 6, 9],
+        [1, 5, 9], [3, 5, 7]
+    ]
 GAMES_TO_WIN = 3
 
 def prompt(message):
@@ -84,12 +89,7 @@ def is_game_over(board):
     return bool(detect_result(board))
 
 def detect_result(board):
-    winning_combinations = [
-        [1, 2, 3], [4, 5, 6], [7, 8, 9],
-        [1, 4, 7], [2, 5, 8], [3, 6, 9],
-        [1, 5, 9], [3, 5, 7]
-    ]
-    for line in winning_combinations:
+    for line in WINNING_COMBINATIONS:
         square1, square2, square3 = line
         if (board[square1] == HUMAN_MARKER
             and board[square2] == HUMAN_MARKER
@@ -153,7 +153,7 @@ def replay_game():
     return True
 
 def is_yes():
-    answer = input().lower()
+    answer = input().lower().strip()
 
     while answer not in ['y', 'n']:
         prompt(messages['invalid_input'])
