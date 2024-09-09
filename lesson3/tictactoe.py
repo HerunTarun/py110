@@ -269,37 +269,39 @@ def switch_player(current_player):
 def play_tic_tac_toe():
     clear_screen()
     display_welcome()
-    opponent = choose_opponent()
-    display_challenge(opponent)
     scores = {'player_score': 0, 'computer_score': 0}
     
     while True:
-        current_player = choose_player()
-        clear_screen()
-        board = initialize_board()
-
+        opponent = choose_opponent()
+        display_challenge(opponent)
+        
         while True:
+            current_player = choose_player()
             clear_screen()
-            display_board(board, opponent)
-            choose_square(board, current_player, opponent)
-            current_player = switch_player(current_player)
-            if detect_result(board, opponent):
+            board = initialize_board()
+
+            while True:
                 clear_screen()
                 display_board(board, opponent)
+                choose_square(board, current_player, opponent)
+                current_player = switch_player(current_player)
+                if detect_result(board, opponent):
+                    clear_screen()
+                    display_board(board, opponent)
+                    break
+
+            if is_game_over(board, opponent):
+                winner = detect_result(board, opponent)
+                display_winner(winner, opponent)
+                update_match_score(winner, scores)
+                display_match_score(scores)
+
+            if is_match_over(scores):
+                display_match_winner(scores, opponent)
+                clear_score(scores)
+
+            if not replay_game():
                 break
-
-        if is_game_over(board, opponent):
-            winner = detect_result(board, opponent)
-            display_winner(winner, opponent)
-            update_match_score(winner, scores)
-            display_match_score(scores)
-
-        if is_match_over(scores):
-            display_match_winner(scores, opponent)
-            clear_score(scores)
-        else:
-            pass
-
         if not replay_game():
             break
 
