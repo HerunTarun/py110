@@ -6,7 +6,7 @@ import pdb
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
-GAMES_TO_WIN = 3 
+GAMES_TO_WIN = 3
 
 def prompt(message):
     print(f'==> {message}')
@@ -20,7 +20,7 @@ def display_welcome():
     prompt(messages['game_rules'])
 
 def display_board(board):
-    prompt(messages['markers'].format(HUMAN_MARKER = HUMAN_MARKER, 
+    prompt(messages['markers'].format(HUMAN_MARKER = HUMAN_MARKER,
                                       COMPUTER_MARKER = COMPUTER_MARKER))
     print('')
     print('     |     |')
@@ -91,12 +91,12 @@ def detect_result(board):
     ]
     for line in winning_combinations:
         square1, square2, square3 = line
-        if (board[square1] == HUMAN_MARKER 
-            and board[square2] == HUMAN_MARKER 
+        if (board[square1] == HUMAN_MARKER
+            and board[square2] == HUMAN_MARKER
             and board[square3] == HUMAN_MARKER):
             return 'Player'
-        elif (board[square1] == COMPUTER_MARKER 
-              and board[square2] == COMPUTER_MARKER 
+        elif (board[square1] == COMPUTER_MARKER
+              and board[square2] == COMPUTER_MARKER
               and board[square3] == COMPUTER_MARKER):
             return 'Alexandra'
         elif board_full(board):
@@ -130,7 +130,7 @@ def is_match_over(scores):
     if GAMES_TO_WIN in list(scores.values()):
         return True
 
-    return False    
+    return False
 
 def display_match_winner(scores):
     if scores['player_score'] == GAMES_TO_WIN:
@@ -160,10 +160,7 @@ def is_yes():
         prompt(messages['replay_options'])
         answer = input().lower()
 
-    if answer == 'y':
-        return True
-    else:
-        return False
+    return bool(answer == 'y')
 
 def choose_square(board, current_player):
     if current_player == 'Player':
@@ -181,17 +178,18 @@ def choose_player():
 def switch_player(current_player):
     if current_player == 'Player':
         return 'Alexandra'
-    else:
-        return 'Player'
+
+    return 'Player'
 
 def play_tic_tac_toe():
+    clear_screen()
     display_welcome()
     scores = {'player_score': 0, 'computer_score': 0}
     while True:
         current_player = choose_player()
         clear_screen()
         board = initialize_board()
-        
+
         while True:
             clear_screen()
             display_board(board)
