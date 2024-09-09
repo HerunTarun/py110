@@ -3,6 +3,7 @@
     "name_intro": "You'll be playing against Alexandra! She's the reigning eight-year-old champion in her class, see if you can beat her!",
     "game_rules": "Remember, first person to place three marks in a horizontal, vertical or diagonal line wins!",
     "match_rules": "You get 1 point for a win, and no points for a loss or a draw. First one to 5 points wins takes the match!",
+    "choose first player": "Would you like to go first?",
     "markers": "You are {HUMAN_MARKER} and Alexandra is {COMPUTER_MARKER}",
     "player_input": "Choose a square ({formatted_valid_choices}): ",
     "invalid_input": "Sorry! That's not a valid choice. Try something from below!",

@@ -170,7 +170,14 @@ def choose_square(board, current_player):
         player_chooses_square(board)
     else:
         computer_chooses_square(board)
-    
+
+def choose_player():
+    prompt(messages['choose first player'])
+    if is_yes():
+        return 'Player'
+
+    return 'Computer'
+
 def switch_player(current_player):
     if current_player == 'Player':
         return 'Alexandra'
@@ -181,9 +188,9 @@ def play_tic_tac_toe():
     display_welcome()
     scores = {'player_score': 0, 'computer_score': 0}
     while True:
+        current_player = choose_player()
         clear_screen()
         board = initialize_board()
-        current_player = 'Player'
         
         while True:
             clear_screen()
