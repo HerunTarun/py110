@@ -182,11 +182,13 @@ def play_tic_tac_toe():
         current_player = 'Player'
         
         while True:
+            clear_screen()
             display_board(board)
-
             choose_square(board, current_player)
             current_player = switch_player(current_player)
             if someone_won(board) or board_full(board):
+                clear_screen()
+                display_board(board)
                 break
 
         if someone_won(board):
