@@ -80,10 +80,10 @@ def computer_chooses_square(board):
 def board_full(board):
     return len(empty_squares(board)) == 0
 
-def someone_won(board):
-    return bool(detect_winner(board))
+def is_game_over(board):
+    return bool(detect_result(board))
 
-def detect_winner(board):
+def detect_result(board):
     winning_combinations = [
         [1, 2, 3], [4, 5, 6], [7, 8, 9],
         [1, 4, 7], [2, 5, 8], [3, 6, 9],
@@ -99,6 +99,8 @@ def detect_winner(board):
               and board[square2] == COMPUTER_MARKER 
               and board[square3] == COMPUTER_MARKER):
             return 'Alexandra'
+        elif board_full(board):
+            return 'Draw'
 
     return None
 
@@ -108,6 +110,8 @@ def display_winner(winner):
             prompt(messages['win'])
         case 'Alexandra':
             prompt(messages['lose'])
+        case 'Draw':
+            prompt(messages['tie'])
 
 def update_match_score(winner, scores):
     if winner == 'Player':
@@ -186,18 +190,15 @@ def play_tic_tac_toe():
             display_board(board)
             choose_square(board, current_player)
             current_player = switch_player(current_player)
-            if someone_won(board) or board_full(board):
+            if detect_result(board):
                 clear_screen()
                 display_board(board)
                 break
 
-        if someone_won(board):
-            winner = detect_winner(board)
+        if is_game_over(board):
+            winner = detect_result(board)
             display_winner(winner)
             update_match_score(winner, scores)
-            display_match_score(scores)
-        else:
-            prompt(messages['tie'])
             display_match_score(scores)
 
         if is_match_over(scores):
