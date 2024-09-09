@@ -11,6 +11,7 @@ WINNING_COMBINATIONS = [
         [1, 4, 7], [2, 5, 8], [3, 6, 9],
         [1, 5, 9], [3, 5, 7]
     ]
+COMPUTER_OPPONENTS = ['Alexandra', 'Margaret', 'Cookie']
 GAMES_TO_WIN = 3
 
 def prompt(message):
@@ -21,8 +22,32 @@ def clear_screen():
 
 def display_welcome():
     prompt(messages['welcome'])
-    prompt(messages['name_intro'])
     prompt(messages['game_rules'])
+    print()
+    prompt(messages['opponent_intro'])
+    prompt(messages['alexandra_intro'])
+    prompt(messages['margaret_intro'])
+    prompt(messages['cookie_intro'])
+    print()
+
+def choose_opponent():
+    prompt(messages['choose_opponent'])
+    while True:
+        answer = input().lower().strip()
+        if answer in ['cookie', 'margaret', 'alexandra', 'alex', 'marge']:
+            break
+        prompt(messages['invalid_opponent_choice'])
+    
+    match answer[0]:
+        case 'a':
+            return 'Alexandra'
+        case 'c':
+            return 'Cookie'
+        case 'm':
+            return 'Margaret'
+
+def display_challenge(opponent):
+    prompt(messages['computer_challenge'].format(opponent = opponent))
 
 def display_board(board):
     prompt(messages['markers'].format(HUMAN_MARKER = HUMAN_MARKER,
@@ -76,19 +101,34 @@ def player_chooses_square(board):
 
     board[int(square)] = HUMAN_MARKER
 
-def computer_chooses_square(board):
+def opponent_chooses_square(board, opponent):
+    match opponent:
+        case 'Alexandra':
+            return random.choice(empty_squares(board))
+        case 'Margaret':
+            return margaret_chooses_square(board)
+        case 'Cookie':
+            return cookie_chooses_square(board)
+
+def margaret_chooses_square(board):
+    return random.choice(empty_squares(board))
+
+def cookie_chooses_square(board):
+    return random.choice(empty_squares(board))
+
+def computer_chooses_square(board, opponent):
     if len(empty_squares(board)) == 0:
         return
-    square = random.choice(empty_squares(board))
+    square = opponent_chooses_square(board, opponent)
     board[square] = COMPUTER_MARKER
 
 def board_full(board):
     return len(empty_squares(board)) == 0
 
-def is_game_over(board):
-    return bool(detect_result(board))
+def is_game_over(board, opponent):
+    return bool(detect_result(board, opponent))
 
-def detect_result(board):
+def detect_result(board, opponent):
     for line in WINNING_COMBINATIONS:
         square1, square2, square3 = line
         if (board[square1] == HUMAN_MARKER
@@ -98,26 +138,25 @@ def detect_result(board):
         elif (board[square1] == COMPUTER_MARKER
               and board[square2] == COMPUTER_MARKER
               and board[square3] == COMPUTER_MARKER):
-            return 'Alexandra'
+            return opponent
         elif board_full(board):
             return 'Draw'
 
     return None
 
 def display_winner(winner):
-    match winner:
-        case 'Player':
-            prompt(messages['win'])
-        case 'Alexandra':
-            prompt(messages['lose'])
-        case 'Draw':
-            prompt(messages['tie'])
+    if winner == 'Player':
+        prompt(messages['win'])
+    elif winner in COMPUTER_OPPONENTS:
+        prompt(messages['lose'])
+    else:
+        prompt(messages['tie'])
 
 def update_match_score(winner, scores):
     if winner == 'Player':
         scores['player_score'] += 1
 
-    if winner == 'Alexandra':
+    if winner in COMPUTER_OPPONENTS:
         scores['computer_score'] += 1
 
 def display_match_score(scores):
@@ -162,11 +201,11 @@ def is_yes():
 
     return bool(answer == 'y')
 
-def choose_square(board, current_player):
+def choose_square(board, current_player, opponent):
     if current_player == 'Player':
         player_chooses_square(board)
     else:
-        computer_chooses_square(board)
+        computer_chooses_square(board, opponent)
 
 def choose_player():
     prompt(messages['choose first player'])
@@ -177,14 +216,17 @@ def choose_player():
 
 def switch_player(current_player):
     if current_player == 'Player':
-        return 'Alexandra'
+        return 'Computer'
 
     return 'Player'
 
 def play_tic_tac_toe():
     clear_screen()
     display_welcome()
+    opponent = choose_opponent()
+    display_challenge(opponent)
     scores = {'player_score': 0, 'computer_score': 0}
+    
     while True:
         current_player = choose_player()
         clear_screen()
@@ -193,15 +235,15 @@ def play_tic_tac_toe():
         while True:
             clear_screen()
             display_board(board)
-            choose_square(board, current_player)
+            choose_square(board, current_player, opponent)
             current_player = switch_player(current_player)
-            if detect_result(board):
+            if detect_result(board, opponent):
                 clear_screen()
                 display_board(board)
                 break
 
-        if is_game_over(board):
-            winner = detect_result(board)
+        if is_game_over(board, opponent):
+            winner = detect_result(board, opponent)
             display_winner(winner)
             update_match_score(winner, scores)
             display_match_score(scores)
