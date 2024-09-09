@@ -49,9 +49,10 @@ def choose_opponent():
 def display_challenge(opponent):
     prompt(messages['computer_challenge'].format(opponent = opponent))
 
-def display_board(board):
+def display_board(board, opponent):
     prompt(messages['markers'].format(HUMAN_MARKER = HUMAN_MARKER,
-                                      COMPUTER_MARKER = COMPUTER_MARKER))
+                                      COMPUTER_MARKER = COMPUTER_MARKER,
+                                      opponent = opponent))
     print('')
     print('     |     |')
     print(f'  {board[1]}  |  {board[2]}  |  {board[3]}')
@@ -144,13 +145,40 @@ def detect_result(board, opponent):
 
     return None
 
-def display_winner(winner):
+def display_winner(winner, opponent):
     if winner == 'Player':
-        prompt(messages['win'])
+        display_player_win(opponent)
     elif winner in COMPUTER_OPPONENTS:
-        prompt(messages['lose'])
+        display_computer_winner(winner)
     else:
-        prompt(messages['tie'])
+        display_tie(opponent)
+
+def display_player_win(opponent):
+    match opponent:
+        case 'Alexandra':
+            prompt(messages['player_win_alexandra'])
+        case 'Margaret':
+            prompt(messages['player_win_margaret'])
+        case 'Cookie':
+            prompt(messages['player_win_cookie'])
+
+def display_computer_winner(winner):
+    match winner:
+        case 'Alexandra':
+            prompt(messages['alexandra_win'])
+        case 'Margaret':
+            prompt(messages['margaret_win'])
+        case 'Cookie':
+            prompt(messages['cookie_win'])
+
+def display_tie(opponent):
+    match opponent:
+        case 'Alexandra':
+            prompt(messages['alexandra_tie'])
+        case 'Margaret':
+            prompt(messages['margaret_tie'])
+        case 'Cookie':
+            prompt(messages['cookie_tie'])
 
 def update_match_score(winner, scores):
     if winner == 'Player':
@@ -171,12 +199,30 @@ def is_match_over(scores):
 
     return False
 
-def display_match_winner(scores):
+def display_match_winner(scores, opponent):
     if scores['player_score'] == GAMES_TO_WIN:
-        prompt(messages['player_match_winner'])
+        display_player_match_winner(opponent)
 
     if scores['computer_score'] == GAMES_TO_WIN:
-        prompt(messages['computer_match_winner'])
+        display_computer_match_winner(opponent)
+
+def display_player_match_winner(opponent):
+    match opponent:
+        case 'Alexandra':
+            prompt(messages['player_match_winner_alexandra'])
+        case 'Margaret':
+            prompt(messages['player_match_winner_margaret'])
+        case 'Cookie':
+            prompt(messages['player_match_winner_cookie'])
+
+def display_computer_match_winner(opponent):
+    match opponent:
+        case 'Alexandra':
+            prompt(messages['alexandra_match_winner'])
+        case 'Margaret':
+            prompt(messages['margaret_match_winner'])
+        case 'Cookie':
+            prompt(messages['cookie_match_winner'])
 
 def clear_score(scores):
     scores['player_score'] = 0
@@ -234,22 +280,22 @@ def play_tic_tac_toe():
 
         while True:
             clear_screen()
-            display_board(board)
+            display_board(board, opponent)
             choose_square(board, current_player, opponent)
             current_player = switch_player(current_player)
             if detect_result(board, opponent):
                 clear_screen()
-                display_board(board)
+                display_board(board, opponent)
                 break
 
         if is_game_over(board, opponent):
             winner = detect_result(board, opponent)
-            display_winner(winner)
+            display_winner(winner, opponent)
             update_match_score(winner, scores)
             display_match_score(scores)
 
         if is_match_over(scores):
-            display_match_winner(scores)
+            display_match_winner(scores, opponent)
             clear_score(scores)
         else:
             pass
