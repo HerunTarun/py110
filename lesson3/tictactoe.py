@@ -131,7 +131,7 @@ def margaret_chooses_square(board):
     return random.choice(empty_squares(board))
 
 def cookie_chooses_square(board):
-    return random.choice(empty_squares(board))
+    pass # ADD MINIMAX
 
 def computer_chooses_square(board, opponent):
     if len(empty_squares(board)) == 0:
