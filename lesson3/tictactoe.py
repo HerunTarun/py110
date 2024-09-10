@@ -266,44 +266,49 @@ def switch_player(current_player):
 
     return 'Player'
 
+def is_new_game(scores):
+    if (scores['player_score'] == 0) and (scores['computer_score'] == 0):
+        return True
+    return False
+
+
 def play_tic_tac_toe():
     clear_screen()
     display_welcome()
     scores = {'player_score': 0, 'computer_score': 0}
     
     while True:
-        opponent = choose_opponent()
-        display_challenge(opponent)
+        if is_new_game(scores):
+            opponent = choose_opponent()
+            display_challenge(opponent)
         
-        while True:
-            current_player = choose_player()
-            clear_screen()
-            board = initialize_board()
+        current_player = choose_player()
+        clear_screen()
+        board = initialize_board()
 
-            while True:
+        while True:
+            clear_screen()
+            display_board(board, opponent)
+            choose_square(board, current_player, opponent)
+            current_player = switch_player(current_player)
+            if detect_result(board, opponent):
                 clear_screen()
                 display_board(board, opponent)
-                choose_square(board, current_player, opponent)
-                current_player = switch_player(current_player)
-                if detect_result(board, opponent):
-                    clear_screen()
-                    display_board(board, opponent)
-                    break
-
-            if is_game_over(board, opponent):
-                winner = detect_result(board, opponent)
-                display_winner(winner, opponent)
-                update_match_score(winner, scores)
-                display_match_score(scores)
-
-            if is_match_over(scores):
-                display_match_winner(scores, opponent)
-                clear_score(scores)
-
-            if not replay_game():
                 break
+
+        if is_game_over(board, opponent):
+            winner = detect_result(board, opponent)
+            display_winner(winner, opponent)
+            update_match_score(winner, scores)
+            display_match_score(scores)
+
+        if is_match_over(scores):
+            display_match_winner(scores, opponent)
+            clear_score(scores)
+        
         if not replay_game():
             break
+
 
 with open('ttt_messages.json', 'r') as file:
     messages = json.load(file)
