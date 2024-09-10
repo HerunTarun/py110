@@ -22,7 +22,7 @@ def clear_screen():
 
 def display_welcome():
     prompt(messages['welcome'])
-    prompt(messages['game_rules'])
+    prompt(messages['game_rules'].format(GAMES_TO_WIN = GAMES_TO_WIN))
     print()
     prompt(messages['opponent_intro'])
     prompt(messages['alexandra_intro'])

@@ -8,7 +8,7 @@
     "invalid_opponent_choice": "Sorry! Please pick between 'Alexandra', 'Margaret', or 'Cookie'!",
     "computer_challenge": "{opponent} is ready!",
     "game_rules": "Remember, first person to place three marks in a horizontal, vertical or diagonal line wins!",
-    "match_rules": "You get 1 point for a win, and no points for a loss or a draw. First one to 5 points wins takes the match!",
+    "match_rules": "You get 1 point for a win, and no points for a loss or a draw. First one to {GAMES_TO_WIN} points wins takes the match!",
     "choose first player": "Would you like to go first? Please pick 'y' or 'n'!",
     "markers": "You are {HUMAN_MARKER} and {opponent} is {COMPUTER_MARKER}",
     "player_input": "Choose a square ({formatted_valid_choices}): ",
