@@ -11,6 +11,11 @@ WINNING_COMBINATIONS = [
         [1, 4, 7], [2, 5, 8], [3, 6, 9],
         [1, 5, 9], [3, 5, 7]
     ]
+TIC_TAC_TOE_THREATS = {
+    (1, 2): 3, (4, 5): 6, (7, 8): 0,
+    (1, 4): 7, (2, 5): 8, (3, 6): 9,
+    (1, 5): 9, (3, 5): 7
+}
 COMPUTER_OPPONENTS = ['Alexandra', 'Margaret', 'Cookie']
 GAMES_TO_WIN = 3
 
@@ -102,7 +107,7 @@ def player_chooses_square(board):
 
     board[int(square)] = HUMAN_MARKER
 
-def opponent_chooses_square(board, opponent):
+def which_bot_chooses_square(board, opponent):
     match opponent:
         case 'Alexandra':
             return random.choice(empty_squares(board))
@@ -112,6 +117,16 @@ def opponent_chooses_square(board, opponent):
             return cookie_chooses_square(board)
 
 def margaret_chooses_square(board):
+    player_choices = {square for square in board if board[square] == 'X'}
+
+    for threat in TIC_TAC_TOE_THREATS:
+        if set(threat).issubset(player_choices):
+            if TIC_TAC_TOE_THREATS.get(threat) in set(empty_squares(board)):
+                return TIC_TAC_TOE_THREATS.get(threat)
+    
+    if 5 in empty_squares(board):
+        return 5
+
     return random.choice(empty_squares(board))
 
 def cookie_chooses_square(board):
@@ -120,7 +135,7 @@ def cookie_chooses_square(board):
 def computer_chooses_square(board, opponent):
     if len(empty_squares(board)) == 0:
         return
-    square = opponent_chooses_square(board, opponent)
+    square = which_bot_chooses_square(board, opponent)
     board[square] = COMPUTER_MARKER
 
 def board_full(board):
