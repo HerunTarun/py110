@@ -194,10 +194,7 @@ def display_match_score(scores):
                                     ))
 
 def is_match_over(scores):
-    if GAMES_TO_WIN in list(scores.values()):
-        return True
-
-    return False
+    return bool(GAMES_TO_WIN in list(scores.values()))
 
 def display_match_winner(scores, opponent):
     if scores['player_score'] == GAMES_TO_WIN:
@@ -271,7 +268,6 @@ def is_new_game(scores):
         return True
     return False
 
-
 def play_tic_tac_toe():
     clear_screen()
     display_welcome()
@@ -308,7 +304,6 @@ def play_tic_tac_toe():
         
         if not replay_game():
             break
-
 
 with open('ttt_messages.json', 'r') as file:
     messages = json.load(file)
