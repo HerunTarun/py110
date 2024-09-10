@@ -11,11 +11,6 @@ WINNING_COMBINATIONS = [
         [1, 4, 7], [2, 5, 8], [3, 6, 9],
         [1, 5, 9], [3, 5, 7]
     ]
-TIC_TAC_TOE_THREATS = {
-    (1, 2): 3, (4, 5): 6, (7, 8): 0,
-    (1, 4): 7, (2, 5): 8, (3, 6): 9,
-    (1, 5): 9, (3, 5): 7
-}
 COMPUTER_OPPONENTS = ['Alexandra', 'Margaret', 'Cookie']
 GAMES_TO_WIN = 3
 
@@ -120,16 +115,16 @@ def margaret_chooses_square(board):
     player_choices = {square for square in board if board[square] == 'X'}
     computer_choices = {square for square in board if board[square] == 'O'}
 
-    for threat in TIC_TAC_TOE_THREATS:
-        if set(threat) <= (computer_choices):
-            if TIC_TAC_TOE_THREATS.get(threat) in set(empty_squares(board)):
-                return TIC_TAC_TOE_THREATS.get(threat)
+    for combo in WINNING_COMBINATIONS:
+        possible_win = set(combo) & computer_choices
+        if len(possible_win) == 2:
+            return list(set(combo) - possible_win)[0]
 
-    for threat in TIC_TAC_TOE_THREATS:
-        if set(threat).issubset(player_choices):
-            if TIC_TAC_TOE_THREATS.get(threat) in set(empty_squares(board)):
-                return TIC_TAC_TOE_THREATS.get(threat)
-    
+    for combo in WINNING_COMBINATIONS:
+        best_defense = set(combo) & player_choices
+        if len(possible_win) == 2:
+            return list(set(combo) - best_defense)[0]
+        
     if 5 in empty_squares(board):
         return 5
 
