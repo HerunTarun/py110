@@ -1,9 +1,9 @@
 {
     "welcome": "Welcome to Tic Tac Toe!",
     "opponent_intro": "You have your choice of opponents today!",
-    "alexandra_intro": "First up is Alexandra! She's the reigning eight-year-old champion in her class, and is pleased as punch about it. She also hates to lose.",
-    "margaret_intro": "Next up is the ectoplasmically inclined Iron Lady herself. Even ghosts needs hobbies, and the ghost of Margaret Thatcher wants to see how far her uncompromising style will take her in tic tac toe.",
-    "cookie_intro": "Cookie's a wandering cat, and that means nowhere is safe from her curious nose and paws, including this game.",
+    "alexandra_intro": "First up is Alexandra! She's the reigning eight-year-old champion in her class,\nand is pleased as punch about it.",
+    "margaret_intro": "Next up is the ectoplasmically inclined Iron Lady herself.\nEven ghosts needs hobbies, and the ghost of Margaret Thatcher wants to see\nhow far her uncompromising style will take her in tic tac toe.",
+    "cookie_intro": "Cookie's a wandering cat, and that means nowhere is safe from\nher curious nose and paws, including this game.",
     "choose_opponent": "Who would you like to play against: Alexandra, Margaret, or Cookie?",
     "invalid_opponent_choice": "Sorry! Please pick between 'Alexandra', 'Margaret', or 'Cookie'!",
     "computer_challenge": "{opponent} is ready!",
