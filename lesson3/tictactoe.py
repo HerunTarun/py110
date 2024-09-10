@@ -122,7 +122,7 @@ def margaret_chooses_square(board):
 
     for combo in WINNING_COMBINATIONS:
         best_defense = set(combo) & player_choices
-        if len(possible_win) == 2:
+        if len(best_defense) == 2:
             return list(set(combo) - best_defense)[0]
         
     if 5 in empty_squares(board):
