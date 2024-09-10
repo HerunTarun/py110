@@ -118,6 +118,12 @@ def which_bot_chooses_square(board, opponent):
 
 def margaret_chooses_square(board):
     player_choices = {square for square in board if board[square] == 'X'}
+    computer_choices = {square for square in board if board[square] == 'O'}
+
+    for threat in TIC_TAC_TOE_THREATS:
+        if set(threat) <= (computer_choices):
+            if TIC_TAC_TOE_THREATS.get(threat) in set(empty_squares(board)):
+                return TIC_TAC_TOE_THREATS.get(threat)
 
     for threat in TIC_TAC_TOE_THREATS:
         if set(threat).issubset(player_choices):
