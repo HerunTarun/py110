@@ -9,13 +9,15 @@ def prompt(message):
     print(f'==> {message}')
 
 def initialize_deck():
-    suits = [suit for suit in 'HDSC']
-    values = [card for card in '23456789JQKA']
-    return [[suit, value] for suit in suits for value in values]        
+    suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs']
+    values = ['2', '3', '4', '5', '6', '7', '8', '9',
+              'Jack', 'Queen', 'King', 'Ace']
+    return [[value, suit] for suit in suits for value in values]
 
 def deal_player_cards(deck):
     card_one = random.choice(deck)
     deck.remove(card_one)
+
     card_two = random.choice(deck)
     deck.remove(card_two)
 
@@ -32,6 +34,11 @@ def deal_dealer_cards(deck):
     dealer_hand = [card_one, card_two]
 
     return dealer_hand, deck
+
+def display_hands(player, dealer):
+    prompt(messages['dealer_hand'].format(dealer = dealer))
+    prompt(messages['player_hand'].format(player = player))
+
 
 def replay_game():
     prompt(messages['replay'])
@@ -57,13 +64,20 @@ def play_twenty_one():
         deck = initialize_deck()
         player_hand, deck = deal_player_cards(deck)
         dealer_hand, deck = deal_dealer_cards(deck)
-
+        print(player_hand)
+        print(dealer_hand)
+        print(deck)
+        display_hands(player_hand, dealer_hand)
+        # player_choice()
+        # dealer_choice()
+        # calculate_score()
+        # display_result()
         if not replay_game():
             break
 
 
 
-with open('ttt_messages.json', 'r') as file:
+with open('twenty_one_messages.json', 'r') as file:
     messages = json.load(file)
 
 play_twenty_one()

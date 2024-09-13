@@ -4,6 +4,8 @@
     "match_rules": "You get 1 point for a win, and no points for a loss or a draw. First one to {GAMES_TO_WIN} points wins takes the match!",
     "player_input": "DO you want to hit or stay?",
     "invalid_input": "Sorry! That's not a valid choice. Try either 'hit' or 'stay'!",
+    "dealer_hand": "The dealer has a {dealer[0][0]} of {dealer[0][1]} and an unknown card",
+    "player_hand": "You have a {player[0][0]} of {player[0][1]} and a {player[1][0]} of {player[1][1]}.",
     "player_win_alexandra": "You won the game! Alexandra's getting fired up. She's gonna beat you next time!",
     "alexandra_win": "Alexandra won! She gives you a hug and whispers 'It's okay, I've lost plenty of times too'",
     "alexandra_tie": "It's a tie! Alexandra squints at you. 'You're better than I thought'",
