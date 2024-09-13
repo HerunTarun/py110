@@ -66,7 +66,7 @@ def play_twenty_one():
         dealer_hand, deck = deal_dealer_cards(deck)
         print(player_hand)
         print(dealer_hand)
-        print(deck)
+        print(len(deck))
         display_hands(player_hand, dealer_hand)
         # player_choice()
         # dealer_choice()
