@@ -1,0 +1,16 @@
+{
+    "welcome": "Welcome to Twenty One!",
+    "game_rules": "Unfortunately, it's not Blackjack, but it's pretty similar. Number cards are worth their number; Jacks, Queens, and Kings are worth ten; and Aces can be worth one or eleven, depending on how close you are to twenty one!",
+    "match_rules": "You get 1 point for a win, and no points for a loss or a draw. First one to {GAMES_TO_WIN} points wins takes the match!",
+    "player_input": "DO you want to hit or stay?",
+    "invalid_input": "Sorry! That's not a valid choice. Try either 'hit' or 'stay'!",
+    "player_win_alexandra": "You won the game! Alexandra's getting fired up. She's gonna beat you next time!",
+    "alexandra_win": "Alexandra won! She gives you a hug and whispers 'It's okay, I've lost plenty of times too'",
+    "alexandra_tie": "It's a tie! Alexandra squints at you. 'You're better than I thought'",
+    "match_score": "The match score is {player_score} : {computer_score}",
+    "player_match_winner_alexandra": "You won the match! Alexandra is currently planning her tic-tac-toe training montage.",
+    "alexandra_match_winner": "Aw, you lost! Alexandra is currently arguing with her mother about the merits of a second scoop of ice-cream.",
+    "replay": "Do you want to play again? Enter 'y' or 'n'!",
+    "replay_options": "You can pick 'y' or 'n'.",
+    "goodbye": "See you later!"
+}
