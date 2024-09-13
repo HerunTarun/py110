@@ -11,7 +11,7 @@ WINNING_COMBINATIONS = [
         [1, 4, 7], [2, 5, 8], [3, 6, 9],
         [1, 5, 9], [3, 5, 7]
     ]
-COMPUTER_OPPONENTS = ['Alexandra', 'Margaret', 'Cookie']
+COMPUTER_OPPONENTS = ['Alexandra', 'Margaret']
 GAMES_TO_WIN = 3
 
 def prompt(message):
@@ -27,14 +27,13 @@ def display_welcome():
     prompt(messages['opponent_intro'])
     prompt(messages['alexandra_intro'])
     prompt(messages['margaret_intro'])
-    prompt(messages['cookie_intro'])
     print()
 
 def choose_opponent():
     prompt(messages['choose_opponent'])
     while True:
         answer = input().lower().strip()
-        if answer in ['cookie', 'margaret', 'alexandra', 'alex', 'marge']:
+        if answer in ['margaret', 'alexandra', 'alex', 'marge']:
             break
         prompt(messages['invalid_opponent_choice'])
     
@@ -43,8 +42,6 @@ def choose_opponent():
             return 'Alexandra'
         case 'c':
             return 'Cookie'
-        case 'm':
-            return 'Margaret'
 
 def display_challenge(opponent):
     prompt(messages['computer_challenge'].format(opponent = opponent))
@@ -108,8 +105,6 @@ def which_bot_chooses_square(board, opponent):
             return random.choice(empty_squares(board))
         case 'Margaret':
             return margaret_chooses_square(board)
-        case 'Cookie':
-            return cookie_chooses_square(board)
 
 def margaret_chooses_square(board):
     player_choices = {square for square in board if board[square] == 'X'}
@@ -129,9 +124,6 @@ def margaret_chooses_square(board):
         return 5
 
     return random.choice(empty_squares(board))
-
-def cookie_chooses_square(board):
-    pass # ADD MINIMAX
 
 def computer_chooses_square(board, opponent):
     if len(empty_squares(board)) == 0:
@@ -175,8 +167,6 @@ def display_player_win(opponent):
             prompt(messages['player_win_alexandra'])
         case 'Margaret':
             prompt(messages['player_win_margaret'])
-        case 'Cookie':
-            prompt(messages['player_win_cookie'])
 
 def display_computer_winner(winner):
     match winner:
@@ -184,8 +174,6 @@ def display_computer_winner(winner):
             prompt(messages['alexandra_win'])
         case 'Margaret':
             prompt(messages['margaret_win'])
-        case 'Cookie':
-            prompt(messages['cookie_win'])
 
 def display_tie(opponent):
     match opponent:
@@ -193,8 +181,6 @@ def display_tie(opponent):
             prompt(messages['alexandra_tie'])
         case 'Margaret':
             prompt(messages['margaret_tie'])
-        case 'Cookie':
-            prompt(messages['cookie_tie'])
 
 def update_match_score(winner, scores):
     if winner == 'Player':
@@ -225,8 +211,6 @@ def display_player_match_winner(opponent):
             prompt(messages['player_match_winner_alexandra'])
         case 'Margaret':
             prompt(messages['player_match_winner_margaret'])
-        case 'Cookie':
-            prompt(messages['player_match_winner_cookie'])
 
 def display_computer_match_winner(opponent):
     match opponent:
@@ -234,8 +218,6 @@ def display_computer_match_winner(opponent):
             prompt(messages['alexandra_match_winner'])
         case 'Margaret':
             prompt(messages['margaret_match_winner'])
-        case 'Cookie':
-            prompt(messages['cookie_match_winner'])
 
 def clear_score(scores):
     scores['player_score'] = 0
