@@ -2,7 +2,6 @@ import random
 import json
 import os
 
-
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -24,6 +23,8 @@ def display_welcome():
     prompt(messages['game_rules'].format(GAMES_TO_WIN = GAMES_TO_WIN))
     print()
     prompt(messages['opponent_intro'])
+    prompt(messages['opponent_rules'])
+    print()
     prompt(messages['alexandra_intro'])
     prompt(messages['margaret_intro'])
     print()
