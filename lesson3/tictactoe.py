@@ -15,6 +15,9 @@ GAMES_TO_WIN = 3
 
 # Display Functions
 
+def clear_screen():
+    os.system('clear')
+
 def prompt(message):
     print(f'==> {message}')
 
@@ -107,9 +110,6 @@ def display_computer_match_winner(opponent):
             prompt(messages['margaret_match_winner'])
 
 # Formatting Functions
-
-def clear_screen():
-    os.system('clear')
 
 def format_valid_choices(lst, sep=', ', conjunction='or'):
     if len(lst) < 2:
