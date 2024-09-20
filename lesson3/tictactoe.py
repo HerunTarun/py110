@@ -128,9 +128,7 @@ def format_valid_choices(lst, sep=', ', conjunction='or'):
 # Predicates
 
 def is_new_game(scores):
-    if (scores['player_score'] == 0) and (scores['computer_score'] == 0):
-        return True
-    return False
+    return (scores['player_score'] == 0) and (scores['computer_score'] == 0)
 
 def is_game_over(board, opponent):
     return bool(detect_result(board, opponent))
