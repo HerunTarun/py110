@@ -12,6 +12,7 @@ WINNING_COMBINATIONS = [
     ]
 COMPUTER_OPPONENTS = ['Alexandra', 'Margaret']
 GAMES_TO_WIN = 3
+CENTER_SQUARE = 5
 
 # Display Functions
 
@@ -173,7 +174,7 @@ def choose_opponent():
     prompt(messages['choose_opponent'])
     while True:
         answer = input().lower().strip()
-        if answer in ['margaret', 'alexandra', 'alex', 'marge']:
+        if answer in ['margaret', 'alexandra', 'alex', 'marge', 'a', 'm']:
             break
         prompt(messages['invalid_opponent_choice'])
 
@@ -232,8 +233,8 @@ def margaret_chooses_square(board):
         if len(best_defense) == 2:
             return list(set(combo) - best_defense)[0]
 
-    if 5 in empty_squares(board):
-        return 5
+    if CENTER_SQUARE in empty_squares(board):
+        return CENTER_SQUARE
 
     return random.choice(empty_squares(board))
 
