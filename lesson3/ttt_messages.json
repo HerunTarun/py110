@@ -2,7 +2,7 @@
     "welcome": "Welcome to Tic Tac Toe!",
     "opponent_intro": "You have your choice of opponents today!",
     "opponent_rules": "Choose wisely, since once you pick an opponent, you won't be able\nto change them until you finish the match!",
-    "alexandra_intro": "First up is Alexandra! She's the reigning eight-year-old champion \nin her class,and is pleased as punch about it.",
+    "alexandra_intro": "First up is Alexandra! She's the reigning eight-year-old champion \nin her class, and is pleased as punch about it.",
     "margaret_intro": "Next up is the ectoplasmically inclined Iron Lady herself.\nEven ghosts needs hobbies, and the ghost of Margaret Thatcher wants to see\nhow far her uncompromising style will take her in tic tac toe.",
     "choose_opponent": "Who would you like to play against: Alexandra or Margaret?",
     "invalid_opponent_choice": "Sorry! Please pick between 'Alexandra' or 'Margaret'!",
